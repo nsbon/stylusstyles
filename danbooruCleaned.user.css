@@ -1,0 +1,222 @@
+/* ==UserStyle==
+@name           Danbooru Cleaned
+@namespace      github.com/openstyles/stylus
+@version        1.0.0
+@description    A userstyle for Danbooru.
+@author         Wintermourn
+@preprocessor   stylus
+@var checkbox sidebarHover "Sidebar Hover Mode (Disables autocomplete clicking)" 0
+@var color background "Background Color" #112
+@var color foreground "Foreground Color" #223
+@var color highlight "Highlight Background Color" #334
+@var color code "Code Color" #444
+@var color search "Search/Top Color" #445
+@var color text "Text Color" #fff
+@var color link "Link Color" #5af
+@var color artistTag "Artist Tag Color" #faa
+@var color contentTag "General Tag Color" #88f
+@var color seriesTag "Copyright Tag Color" #faf
+@var color characterTag "Character Tag Color" #afa
+@var color metaTag "Meta Tag Color" #f50
+==/UserStyle== */
+
+@-moz-document domain("danbooru.donmai.us") {
+    @import url('https://fonts.googleapis.com/css2?family=Lexend&display=swap');
+    
+    html {
+        --form-button-hover-background: search !important;
+        --form-button-hover-box-shadow-color: search !important;
+        --button-primary-hover-background-color: search !important;
+    }
+    body, div#page, footer#page-footer {
+        background-color: background;
+        border: 0 !important;
+    }
+    
+    footer > * {
+        filter: grayscale(100%);
+    }
+    
+    * {
+        font-family: 'lexend';
+        color: text !important;
+    }
+    
+    #news-updates {
+        background-color: #442 !important;
+        border: 0 !important;
+        a {
+            color: text !important;
+            font-weight: 900;
+            font-size: 1rem;
+        }
+    }
+    #app-name-header {
+        font-family: 'lexend';
+        font-size: 4rem !important;
+        line-height: 80%;
+    }
+    section#content, aside#sidebar, header#top, .tippy-box {
+        margin: 10px 10px;
+        padding: 10px 10px;
+        border: 0px !important;
+        border-radius: 10px;
+        background-color: foreground !important;
+    }
+    #a-index, #c-tags, table {
+        width: auto !important;
+        max-width: none !important;
+        padding: 0 10px !important;
+        margin: 10px !important;
+        border-radius: 10px !important;
+    }
+    .tippy-arrow, table, tr, tr > td {
+        border-radius: 10px !important;
+        background-color: foreground !important;
+        border-color: #0000 !important;
+    }
+    .tippy-arrow::before, .tippy-arrow::after, .tippy-arrow {
+        color: foreground !important;
+        border-top-color: foreground !important;
+    }
+    #subnav-menu {
+        border-radius: 0px 0px 10px 10px;
+        background-color: highlight !important;
+    }
+    .current > a {
+        border-radius: 10px 10px 0px 0px !important;
+        background-color: highlight !important;
+    }
+    
+    div#page {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    #tag-box {
+        padding: 0 10px !important;
+    }
+    
+    aside {
+        padding: 10px;
+    }
+    
+    .notice-small, #artist-commentary, .post-notice, .popup-menu :hover {
+        background-color: search !important;
+        border: 0px !important;
+    }
+    
+    code {
+        padding: 3px !important;
+        border-radius: 3px !important;
+        background-color: code !important;
+    }
+    
+    //search
+    input, form, form>button, .artist-other-name {
+        background-color: search;
+        border-color: search;
+    }
+    form {
+        border-radius: 999px 20px 20px 999px !important;
+        background-color: #0000 !important;
+    }
+    input {
+        border-radius: 99px 0px 0px 99px;
+    }
+    form>button {
+        border-radius: 0px 99px 99px 0px !important;
+    }
+    
+    //colors
+    a {
+        color: link !important;
+    }
+    .wiki-link {
+        font-weight: 900;
+        font-size: 1rem;
+    }
+    .tag-type-0,.tag-type-0 > a {
+        color: contentTag !important;
+    }
+    .tag-type-1,.tag-type-1 > a {
+        color: artistTag !important;
+    }
+    .tag-type-3,.tag-type-3 > a {
+        color: seriesTag !important;
+    }
+    .tag-type-4,.tag-type-4 > a {
+        color: characterTag !important;
+    }
+    .tag-type-5,.tag-type-5 > a {
+        color: metaTag !important;
+    }
+    
+    //tooltips
+    .post-tooltip-header {
+        background-color: #334 !important;
+        border-radius: 999px;
+    }
+        
+    #content > section.image-container.note-container.blacklisted {
+        display: table;
+        margin: 0 auto !important;
+        transition: 0.3s;
+    }
+    #content > section.image-container.note-container.blacklisted > picture > img {
+        border-radius: 40px !important;
+        transition: 0.3s;
+    }
+    #content > section.image-container.note-container.blacklisted:hover > picture > img  {
+        border-radius: 0px !important;
+        transition: 0.3s;
+    }
+    if sidebarHover {
+        form, form>input, form>button {
+            max-width: 370px !important;
+        }
+        aside {
+            min-width: 75px !important;
+            pointer-events: all;
+        }
+        #tag-box, form, #options-box, #related-box, #tag-list, #post-information, #post-options, #post-history {
+            display: none !important;
+        }
+        ul#ui-id-2,ul#ui-id-2 > li,ul#ui-id-2 > li > * {
+            pointer-events: none !important;
+        }
+        aside:hover {
+            min-width: 375px !important;
+            #tag-box, form, #options-box, #related-box, #tag-list, #post-information, #post-options, #post-history {
+                display: inline !important;
+            }
+            #tag-box > ul {
+                display: none !important;
+                font-size: 1px !important;
+                transition: 0.3s;
+            }
+            #tag-box:hover {
+                ul {
+                    display: inline !important;
+                    font-size: 1.2em !important;
+                    transition: 0.3s;
+                }
+            }
+            form {
+                display: flex !important;
+            }
+        }
+        input:focus {
+            aside {
+                min-width: 375px !important;
+                #tag-box, form, #options-box, #related-box {
+                    display: inline !important;
+                }
+                form {
+                    display: flex !important;
+                }
+            }
+        }
+    }
+    
+}
